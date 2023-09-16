@@ -3,13 +3,11 @@ import { getStoredCart } from '../../utils/fakeDB';
 import { useLoaderData } from 'react-router-dom';
 
 const Cart = () => {
-    const Pdata=useLoaderData()
+    const {cartArray}=useLoaderData()
+    console.log(cartArray)
   
 
-    const cart=getStoredCart()
-
-    const CartData=localStorage.getItem('shopping-cart')
-   
+  
     return (
         <div>
             this is cart page 

@@ -1,7 +1,7 @@
 import React from 'react';
 
-const ProductCard = ({product,hundleAddToCart}) => {
-    const {name,picture,category,price,id}=product;
+const ProductCard = ({products,hundleAddToCart}) => {
+    const {name,picture,category,price,id}=products;
 
  
     return (

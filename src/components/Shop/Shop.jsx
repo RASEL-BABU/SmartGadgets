@@ -16,9 +16,9 @@ const Shop = () => {
     return (
         <div className='grid md:grid-cols-2 lg:grid-cols-3 '>
             {
-                productsData.map(product=><ProductCard key={product.id} 
+                productsData.map(products=><ProductCard key={products.id} 
 
-                    product={product} hundleAddToCart={hundleAddToCart}
+                    products={products} hundleAddToCart={hundleAddToCart}
                 >
 
                 </ProductCard>)
