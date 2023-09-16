@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import heroIMG from '../assets/hero.jpg'
 
 const Home = () => {
     return (
@@ -27,11 +28,11 @@ const Home = () => {
             </div>
           </div>
         </div>
-        {/* <img
-          src={heroImg}
+        <img
+          src={heroIMG}
           alt=''
           className='w-5/6 mx-auto mb-12 -mt-12 lg:-mt-40 rounded-lg shadow-md bg-gray-500'
-        /> */}
+        />
       </section>
     );
 };
