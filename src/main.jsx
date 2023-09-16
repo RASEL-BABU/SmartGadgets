@@ -11,6 +11,7 @@ import Home from './components/Home.jsx';
 import About from './components/About.jsx';
 import ErrorPage from './components/ErrorPage.jsx';
 import Shop from './components/Shop/Shop.jsx';
+import Cart from './components/Cards/Cart.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path:'/about',
         element:<About></About>,
+      },
+      {
+        path:'/cart',
+        element:<Cart></Cart>,
       }
     ]
   },
