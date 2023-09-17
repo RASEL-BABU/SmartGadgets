@@ -54,7 +54,7 @@ const Header = () => {
             <Link to='/cart' aria-label='Cart' title='Cart'>
               <div className='relative py-3'>
                 <ShoppingCartIcon className='h-6 w-6 text-cyan-400' />
-                {/* <p className='absolute bottom-5 left-6'>{cart.length}</p> */}
+                <p className='absolute bottom-5 left-6'>{cart.length}</p>
               </div>
             </Link>
           </li>
