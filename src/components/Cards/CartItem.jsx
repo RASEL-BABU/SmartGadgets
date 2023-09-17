@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CartItem = ({product,hundleRomveFromCart,hundleRemoveAll}) => {
+const CartItem = ({product, handleRemoveItem}) => {
   
     const {name,picture,quantity,price,id}=product
 
@@ -30,7 +30,7 @@ const CartItem = ({product,hundleRomveFromCart,hundleRemoveAll}) => {
             </div>
             <div className='flex text-sm divide-x'>
               <button
-                onClick={() => hundleRomveFromCart(id)}
+                onClick={() => handleRemoveItem(id)}
                 type='button'
                 className='flex items-center px-2 py-1 pl-0 space-x-1'
               >

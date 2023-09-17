@@ -7,15 +7,15 @@ export const productsAndCartData = async () => {
     
   
     const savedCart = getStoredCart()
-    const CartArray = []
+    const initialCart = []
     for (const id in savedCart) {
       const foundProduct = products.find(product => product.id === id)
       if (foundProduct) {
         const quantity = savedCart[id]
         foundProduct.quantity = quantity
-        CartArray.push(foundProduct)
+        initialCart.push(foundProduct)
       }
     }
   
-    return { products, CartArray }
+    return { products, initialCart}
   }

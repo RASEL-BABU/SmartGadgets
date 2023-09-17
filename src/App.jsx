@@ -1,28 +1,40 @@
 import React, { createContext, useState } from 'react';
-import Home from './components/Home';
 import { Outlet, useLoaderData } from 'react-router-dom';
 import Footer from './components/Footer';
+import Modal from './components/Modal';
 import Header from './components/Header';
-
-export const ProductContext=createContext([])
-export const CartContext=createContext([])
+export const ProductContext = createContext([])
+export const CartContext = createContext([])
 
 const App = () => {
-  const {cartArray,products}=useLoaderData()
+ 
+  let [isOpen, setIsOpen] = useState(false)
+  const { products, initialCart } = useLoaderData()
+ 
+  const cartAlert = sessionStorage.getItem('alert')
+
+  if (initialCart.length > 0 && cartAlert !== 'true') {
+    setIsOpen(true)
+    sessionStorage.setItem('alert', true)
+  }
   
-  
+  const [cart, setCart] = useState(initialCart)
   return (
-   
- <ProductContext.Provider value={products}>
-     <CartContext.Provider value={[cartArray,products]}>
-     <Header></Header>
-   <div className='md:min-h-[calc(100vh-341px)]'>
-          <Outlet></Outlet>
-        </div>
+    <div>
+       <ProductContext.Provider value={products}>
+      <CartContext.Provider value={[cart, setCart]}>
+        <Header></Header>
+       
+        <div className='md:min-h-[calc(100vh-341px)]'>
+        <Outlet></Outlet>
         <Footer></Footer>
-     </CartContext.Provider>
-  
- </ProductContext.Provider>
+        </div>
+      
+        <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
+      </CartContext.Provider>
+    </ProductContext.Provider>
+    </div>
+    
   );
 };
 

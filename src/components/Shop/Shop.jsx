@@ -1,36 +1,58 @@
-import React, { useContext } from 'react';
-import { useLoaderData } from 'react-router-dom';
-import ProductCard from '../Cards/ProductCard';
-import { addToDB,  } from '../../utils/fakeDB';
-import { ProductContext } from '../../App';
+import React, { useContext, useState } from 'react'
+import { CartContext, ProductContext } from '../../App'
 
+
+// import toast from 'react-hot-toast'
+
+import { addToDb } from '../../utils/fakeDB'
+import ProductCard from '../Cards/ProductCard'
+import toast from 'react-hot-toast'
 
 const Shop = () => {
-const products=useContext(ProductContext)
+  const products = useContext(ProductContext || [])
+ 
+  const [cart, setCart] = useContext(CartContext || [])
 
-
-   
-    const hundleAddToCart=(id)=>{
-   
-    addToDB(id)
-  
+  const handleAddToCart = product => {
+    let newCart = []
+    const exists = cart.find(
+      existingProduct => existingProduct.id === product.id
+    )
+    if (!exists) {
+      product.quantity = 1
+      newCart = [...cart, product]
+    } else {
+      const rest = cart.filter(
+        existingProduct => existingProduct.id !== product.id
+      )
+      exists.quantity = exists.quantity + 1
+      newCart = [...rest, exists]
     }
 
-  
-    return (
-        <div className='grid md:grid-cols-2 lg:grid-cols-3 '>
-            {
-                products.map(products=><ProductCard key={products.id} 
-                   
+    setCart(newCart)
+    // addToDb(product.id)
+    addToDb(product.id)
+  toast.success('Product Added! 🛒', { autoClose: 500 })
+  }
 
-                    products={products} hundleAddToCart={hundleAddToCart}
-                >
-                   
+  return (
+    
+    <div className='my-container'>
+      <div className='product-container'>
+        {products.map(product => (
+      
+          <ProductCard
+            key={product.id}
+            product={product}
+            handleAddToCart={handleAddToCart}></ProductCard>
+          
+        )
+        )
+        }
+       
+      </div>
+    </div>
+  )
+}
 
-                </ProductCard>)
-            }
-        </div>
-    );
-};
-
-export default Shop;
+export default Shop
