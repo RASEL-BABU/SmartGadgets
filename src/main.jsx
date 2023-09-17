@@ -12,12 +12,14 @@ import About from './components/About.jsx';
 import ErrorPage from './components/ErrorPage.jsx';
 import Shop from './components/Shop/Shop.jsx';
 import Cart from './components/Cards/Cart.jsx';
-import { productsAndCartData } from './loaders/getCartandProducts.jsx';
+import { productsAndCartData } from './loaders/getCartandProducts.js';
 const router = createBrowserRouter([
   {
     path: "/",
     element:<App></App>,
     errorElement:<ErrorPage></ErrorPage>,
+    loader:productsAndCartData,
+ 
     children:[
       {
         path:'/',
@@ -25,8 +27,10 @@ const router = createBrowserRouter([
       },
       {
         path:'/shop',
-        element:<Shop></Shop>,
-        loader:productsAndCartData
+        element:<Shop></Shop>
+        ,
+       
+        
       },
       {
         path:'/about',
@@ -35,7 +39,8 @@ const router = createBrowserRouter([
       {
         path:'/cart',
         element:<Cart></Cart>,
-       loader:productsAndCartData
+       
+   
       }
     ]
   },
