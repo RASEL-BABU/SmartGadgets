@@ -5,7 +5,7 @@ import heroIMG from '../assets/hero.jpg'
 const Home = () => {
     return (
         <section>
-        <div className='bg-gray-200'>
+        <div className='bg-blue-200'>
           <div className='my-container flex flex-col items-center pb-24 text-center lg:pb-56 text-gray-900'>
             <h1 className='text-2xl w-full lg:leading-tight sm:text-4xl lg:text-6xl lg:max-w-3xl title-text'>
               Welcome To SmartGadgets

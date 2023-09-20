@@ -37,7 +37,7 @@ const Shop = () => {
 
   return (
     
-    <div className='my-container'>
+    <div className='my-container bg-slate-200'>
       <div className='product-container'>
         {products.map(product => (
       
